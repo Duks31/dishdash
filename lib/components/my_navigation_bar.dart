@@ -1,4 +1,4 @@
-import "package:dishdash/pages/carts_page.dart";
+import 'package:dishdash/pages/cart_page.dart';
 import "package:dishdash/pages/home_page.dart";
 import "package:dishdash/pages/profile_page.dart";
 import "package:dishdash/pages/settings_page.dart";
@@ -45,7 +45,7 @@ class MyNavigationBar extends StatelessWidget {
           case 0:
             return const HomePage();
           case 1:
-            return const CartsPage();
+            return const CartPage();
           case 2:
             return const ProfilePage();
           case 3:
