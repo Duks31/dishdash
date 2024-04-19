@@ -3,9 +3,9 @@ import "package:flutter/material.dart";
 ThemeData lightMode = ThemeData(
   colorScheme: ColorScheme.light(
     background: Colors.grey.shade300, 
-    primary: Colors.grey.shade500, 
-    secondary: Colors.grey.shade100, 
+    primary: Colors.green.shade700, 
+    secondary: Colors.green.shade400, 
     tertiary: Colors.white,
-    inversePrimary: Colors.grey.shade700,
+    inversePrimary: Colors.green.shade900,
   ),
 );

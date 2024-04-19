@@ -1,4 +1,8 @@
+import "package:dishdash/themes/theme_provider.dart";
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:provider/provider.dart";
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -7,11 +11,43 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         title: const Text("Setting Page"),
       ),
-      body: const Center(
-        child: Text("Welcome to the Setting Page"),
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.secondary,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            margin: const EdgeInsets.only(left: 25, top: 10, right: 25),
+            padding: const EdgeInsets.all(25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // dark mode
+                Text(
+                  "Dark Mode",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                ),
+
+                // switch
+                CupertinoSwitch(
+                  value: Provider.of<ThemeProvider>(context, listen: false)
+                      .isDarkMode,
+                  onChanged: (value) =>
+                      Provider.of<ThemeProvider>(context, listen: false)
+                          .toggleTheme(),
+                  ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
