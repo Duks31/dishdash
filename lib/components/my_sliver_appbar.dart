@@ -15,7 +15,7 @@ class MySilverAppBar extends StatelessWidget {
       pinned: true,
       backgroundColor: Theme.of(context).colorScheme.background,
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: Center(child: Text("Door Dash")),
+      title: const Center(child: Text("Dish Dash")),
       automaticallyImplyLeading: false,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(

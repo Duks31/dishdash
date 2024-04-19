@@ -5,6 +5,7 @@ import "package:dishdash/components/my_sliver_appbar.dart";
 import "package:dishdash/components/my_tab_bar.dart";
 import "package:dishdash/models/food.dart";
 import "package:dishdash/models/resturant.dart";
+import "package:dishdash/pages/food_page.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
@@ -42,7 +43,6 @@ class _HomePageState extends State<HomePage>
   //return list of foods in given category
   List<Widget> getFoodInThisCategory(List<Food> fullMenu) {
     return FoodCategory.values.map((category) {
-
       // category menu
       List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
       return ListView.builder(
@@ -54,7 +54,15 @@ class _HomePageState extends State<HomePage>
           final food = categoryMenu[index];
 
           // return food tile UI
-          return FoodTile(food: food, onTap: () {});
+          return FoodTile(
+            food: food,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FoodPage(food: food),
+              ),
+            ),
+          );
         },
       );
     }).toList();
