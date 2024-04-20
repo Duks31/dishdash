@@ -44,7 +44,7 @@ class Resturant extends ChangeNotifier {
         Addons(name: 'Extra Patty', price: 1.99),
         Addons(name: 'Extra Bacon', price: 1.49),
       ],
-    ),
+    ),    
     Food(
       name: 'Veggie Burger',
       description: "Veggie Burger",

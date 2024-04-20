@@ -3,7 +3,7 @@ import "package:dishdash/services/auth/auth_service.dart";
 import "package:flutter/material.dart";
 
 class ProfilePage extends StatelessWidget {
-  ProfilePage({super.key});
+  const ProfilePage({super.key});
 
   void logout() async {
     // get auth service and logout
@@ -22,6 +22,7 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Column(
         children: [
+          const SizedBox(height: 25),
           MyButton(
             text: "Logout",
             onTap: logout,
