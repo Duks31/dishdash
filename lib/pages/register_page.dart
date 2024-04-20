@@ -1,5 +1,6 @@
 import 'package:dishdash/components/my_button.dart';
 import 'package:dishdash/components/my_textfield.dart';
+import 'package:dishdash/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -13,8 +14,45 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController(); 
-  final TextEditingController confirmpasswordController = TextEditingController(); 
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmpasswordController =
+      TextEditingController();
+
+  // resiter method
+  void register() async {
+    // get the auth service
+    final authService = AuthService();
+
+    // check if passwords match -> create new user
+    if (passwordController.text == confirmpasswordController.text) {
+      // try creating user
+      try {
+        await authService.signUpWithEmailAndPassword(
+            emailController.text, passwordController.text);
+      }
+
+      // display errors
+      catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(
+              e.toString(),
+            ),
+          ),
+        );
+      }
+    }
+    // if passords dont match show error
+    else {
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text("Passwords don't match"),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,12 +102,10 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             const SizedBox(height: 25),
 
-            //signin
+            //signup
             MyButton(
               text: "Sign Up",
-              onTap: () {
-                //sign in
-              },
+              onTap: register,
             ),
             const SizedBox(height: 25),
 
@@ -92,7 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ],
             ),
-          ],
+          ],  
         ),
       ),
     );

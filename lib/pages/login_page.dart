@@ -1,5 +1,5 @@
 import "package:dishdash/components/my_button.dart";
-import "package:dishdash/components/my_navigation_bar.dart";
+import "package:dishdash/services/auth/auth_service.dart";
 import "package:flutter/material.dart";
 import "package:dishdash/components/my_textfield.dart";
 
@@ -17,19 +17,22 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
 
   //login method
-  void login() {
-    /*
-    fill out authentication logic here
+  void login() async {
+    // get instance of auth Service
+    final authService = AuthService();
 
-    */
-
-    // navigator to home page
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MyNavigationBar(),
-      ),
-    );
+    // try sign in
+    try {
+      await authService.signInWithEmailAndPassword(
+          emailController.text, passwordController.text);
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
   }
 
   @override
@@ -83,13 +86,17 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Not a member", style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary)),
+                Text("Not a member",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary)),
                 const SizedBox(width: 5),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
                     "Register Now",
-                    style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
