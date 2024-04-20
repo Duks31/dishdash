@@ -1,14 +1,32 @@
 import "package:dishdash/components/my_receipt.dart";
+import "package:dishdash/models/resturant.dart";
 import "package:flutter/material.dart";
+import "package:dishdash/services/database/firestore.dart";
+import "package:provider/provider.dart";
 
-class DeliveryProgressPage extends StatelessWidget {
+class DeliveryProgressPage extends StatefulWidget {
   const DeliveryProgressPage({super.key});
+
+  @override
+  State<DeliveryProgressPage> createState() => _DeliveryProgressPageState();
+}
+
+class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
+  // get access to the database
+  FirestoreService db = FirestoreService();
+
+  @override
+  void initState() {
+    super.initState();
+
+    String receipt = context.read<Resturant>().displayCartReceipt();
+    db.saveOrderToDatabase(receipt);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Delivery in Progress..."),
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
@@ -78,7 +96,7 @@ class DeliveryProgressPage extends StatelessWidget {
                 child: IconButton(
                   icon: const Icon(Icons.message),
                   color: Theme.of(context).colorScheme.primary,
-                  onPressed: () {}, 
+                  onPressed: () {},
                 ),
               ),
 

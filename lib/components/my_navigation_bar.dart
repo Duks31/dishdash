@@ -43,15 +43,15 @@ class MyNavigationBar extends StatelessWidget {
       body: Obx(() {
         switch (selectedIndex.value) {
           case 0:
-            return const HomePage();
+            return HomePage();
           case 1:
-            return const CartPage();
+            return CartPage();
           case 2:
-            return const ProfilePage();
+            return ProfilePage();
           case 3:
-            return const SettingPage();
+            return SettingPage();
           default:
-            return const HomePage();
+            return HomePage();
         }
       }),
     );

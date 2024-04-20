@@ -36,7 +36,7 @@ class MyCartTile extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 20),
 
                   // name and price
                   Column(
@@ -52,22 +52,23 @@ class MyCartTile extends StatelessWidget {
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
+                      // increament nad decreament the quantity
+                      QuantitySelector(
+                        quantity: cartItem.quantity,
+                        food: cartItem.food,
+                        onIncreament: () {
+                          resturant.addToCart(
+                              cartItem.food, cartItem.selectedAddons);
+                        },
+                        onDecreament: () {
+                          resturant.removeFromCart(cartItem);
+                        },
+                      ),
                     ],
                   ),
 
                   const Spacer(),
 
-                  // increament nad decreament the quantity
-                  QuantitySelector(
-                      quantity: cartItem.quantity,
-                      food: cartItem.food,
-                      onIncreament: () {
-                        resturant.addToCart(
-                            cartItem.food, cartItem.selectedAddons);
-                      },
-                      onDecreament: () {
-                        resturant.removeFromCart(cartItem);
-                      })
                 ],
               ),
             ),

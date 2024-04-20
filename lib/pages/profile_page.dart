@@ -1,7 +1,15 @@
+import "package:dishdash/components/my_button.dart";
+import "package:dishdash/services/auth/auth_service.dart";
 import "package:flutter/material.dart";
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+
+  void logout() async {
+    // get auth service and logout
+    final authService = AuthService();
+    authService.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +17,16 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text("Profile Page"),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: const Center(
-        child: Text("Welcome to the Profile Page"),
+      body: Column(
+        children: [
+          MyButton(
+            text: "Logout",
+            onTap: logout,
+          ),
+        ],
       ),
     );
   }

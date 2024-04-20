@@ -10,8 +10,9 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: false,
         title: const Text("Setting Page"),
+      backgroundColor: Colors.transparent,
+      foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
