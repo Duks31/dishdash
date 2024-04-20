@@ -1,6 +1,7 @@
 import "package:dishdash/components/my_button.dart";
 import "package:dishdash/components/my_cart_tile.dart";
 import "package:dishdash/models/resturant.dart";
+import "package:dishdash/pages/payment_page.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
@@ -61,7 +62,6 @@ class CartPage extends StatelessWidget {
           ),
           body: Column(
             children: [
-
               // list of cart items
               Expanded(
                 child: Column(
@@ -78,7 +78,7 @@ class CartPage extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 // get individual cart item
                                 final cartItem = userCart[index];
-                
+
                                 // return cart title UI
                                 return ListTile(
                                   title: MyCartTile(cartItem: cartItem),
@@ -91,12 +91,18 @@ class CartPage extends StatelessWidget {
               ),
 
               // Button to pay
-              MyButton(text: "Go to checkout", onTap: () {
+              MyButton(
+                text: "Go to checkout",
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PaymentPage(),
+                  ),
+                ),
+              ),
 
-              },),
-
+              
               const SizedBox(height: 25.0),
-
             ],
           ),
         );
