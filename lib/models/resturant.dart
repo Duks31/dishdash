@@ -432,7 +432,7 @@ class Resturant extends ChangeNotifier {
     receipt.writeln("Here is your receipt.");
     receipt.writeln();
     
-    String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+    String formattedDate = DateFormat('yyyy-MM-dd    HH:mm:ss').format(DateTime.now());
 
     receipt.writeln("Date: $formattedDate");
     receipt.writeln();
@@ -451,7 +451,7 @@ class Resturant extends ChangeNotifier {
     }
       receipt.writeln("-----------------------------");
       receipt.writeln();
-      receipt.writeln("Total: ${getTotalItems()})}"); 
+      receipt.writeln("Total: ${getTotalItems()}"); 
       receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
       receipt.writeln("Delivering to: $deliveryAddress");
 

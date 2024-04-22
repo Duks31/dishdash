@@ -50,12 +50,6 @@ class _FoodPageState extends State<FoodPage> {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                // food image
-                // Image.asset(
-                //   widget.food.imagePath,
-                //   fit: BoxFit.cover,
-                // ),
-
                 Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(

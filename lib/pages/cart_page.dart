@@ -22,42 +22,43 @@ class CartPage extends StatelessWidget {
         // scafold UI
         return Scaffold(
           appBar: AppBar(
-            title: const Text("Cart"),
+            title: const Center(child: Text("Cart")),
             backgroundColor: Colors.transparent,
             foregroundColor: Theme.of(context).colorScheme.inversePrimary,
             actions: [
               // clear cart button
-              IconButton(
-                icon: const Icon(Icons.delete),
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: const Text("Clear Cart"),
-                      content: const Text(
-                          "Are you sure you want to clear the cart?"),
-                      actions: [
-                        // cancel button
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text("Cancel"),
-                        ),
+              if (userCart.isNotEmpty)
+                IconButton(
+                  icon: const Icon(Icons.delete),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text("Clear Cart"),
+                        content: const Text(
+                            "Are you sure you want to clear the cart?"),
+                        actions: [
+                          // cancel button
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text("Cancel"),
+                          ),
 
-                        // yes button
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            resturant.clearCart();
-                          },
-                          child: const Text("Yes"),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                          // yes button
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              resturant.clearCart();
+                            },
+                            child: const Text("Yes"),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
             ],
           ),
           body: Column(
@@ -69,7 +70,12 @@ class CartPage extends StatelessWidget {
                     userCart.isEmpty
                         ? const Expanded(
                             child: Center(
-                              child: Text("Cart is Empty..."),
+                              child: Text(
+                                "Cart is Empty...",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
                             ),
                           )
                         : Expanded(
@@ -91,17 +97,39 @@ class CartPage extends StatelessWidget {
               ),
 
               // Button to pay
-              MyButton(
-                text: "Go to checkout",
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PaymentPage(),
-                  ),
-                ),
-              ),
+              userCart.isEmpty
+                  ? const SizedBox() // if cart is empty
+                  : MyButton(
+                      text: "Go to checkout",
+                      onTap: () {
+                        if (userCart.isEmpty) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text("Cart is Empty"),
+                              content: const Text(
+                                  "Your cart is empty. please add items to proceed."),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text("OK"),
+                                ),
+                              ],
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PaymentPage(),
+                            ),
+                          );
+                        }
+                      },
+                    ),
 
-              
               const SizedBox(height: 25.0),
             ],
           ),

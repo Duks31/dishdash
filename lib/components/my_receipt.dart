@@ -13,13 +13,20 @@ class MyReceipt extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Thank you for your order!"),
+            const Text("Thank you for your order!", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
             const SizedBox(height: 25),
             Container(
               decoration: BoxDecoration(
                 border:
                     Border.all(color: Theme.of(context).colorScheme.secondary),
                 borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Theme.of(context).colorScheme.secondary,
+                    blurRadius: 10,
+                    spreadRadius: 5,
+                  ),
+                ],
               ),
               padding: const EdgeInsets.all(25),
               child: Consumer<Resturant>(
