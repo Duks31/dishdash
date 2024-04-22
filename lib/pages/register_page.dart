@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dishdash/components/my_button.dart';
 import 'package:dishdash/components/my_textfield.dart';
 import 'package:dishdash/services/auth/auth_service.dart';
@@ -29,6 +30,16 @@ class _RegisterPageState extends State<RegisterPage> {
       try {
         await authService.signUpWithEmailAndPassword(
             emailController.text, passwordController.text);
+        // after creating new user, create a new document in cloudstore called users
+        await FirebaseFirestore.instance
+            .collection("Users")
+            .doc(authService.currentUser!.email)
+            .set(
+          {
+            'username': emailController.text.split("@")[0],
+            'bio': "Hey there! I'm using DishDash",
+          },
+        );
       }
 
       // display errors

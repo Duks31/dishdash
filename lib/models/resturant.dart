@@ -432,9 +432,9 @@ class Resturant extends ChangeNotifier {
     receipt.writeln("Here is your receipt.");
     receipt.writeln();
     
-    String formattedDate = DateFormat('yyyy-MM-dd    HH:mm:ss').format(DateTime.now());
+    String formattedDate = DateFormat('yyyy-MM-dd  HH:mm:ss').format(DateTime.now());
 
-    receipt.writeln("Date: $formattedDate");
+    receipt.writeln("Date & Time: $formattedDate");
     receipt.writeln();
     receipt.writeln("-----------------------------");
 
