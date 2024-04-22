@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                     OutlinedButton.icon(
                       onPressed: gLogin,
                       icon: Image.asset("assets/google.png", width: 25, height: 25),
-                      label: Text("Sign in with Google"),
+                      label: const Text("Sign in with Google"),
                     ),
                   ],
                 ),
