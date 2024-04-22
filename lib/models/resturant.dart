@@ -14,7 +14,7 @@ class Resturant extends ChangeNotifier {
       description: "Cheese Burger",
       imagePath: "assets/images/burger/burger1.jpg",
       price: 5.99,
-      category: FoodCategory.burgers,
+      category: FoodCategory.Burgers,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Patty', price: 1.99),
@@ -26,7 +26,7 @@ class Resturant extends ChangeNotifier {
       description: "Chicken Burger",
       imagePath: "assets/images/burger/burger2.jpg",
       price: 6.99,
-      category: FoodCategory.burgers,
+      category: FoodCategory.Burgers,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Patty', price: 1.99),
@@ -38,7 +38,7 @@ class Resturant extends ChangeNotifier {
       description: "Fish Burger",
       imagePath: "assets/images/burger/burger3.jpg",
       price: 7.99,
-      category: FoodCategory.burgers,
+      category: FoodCategory.Burgers,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Patty', price: 1.99),
@@ -50,7 +50,7 @@ class Resturant extends ChangeNotifier {
       description: "Veggie Burger",
       imagePath: "assets/images/burger/burger4.jpg",
       price: 4.99,
-      category: FoodCategory.burgers,
+      category: FoodCategory.Burgers,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Patty', price: 1.99),
@@ -62,7 +62,7 @@ class Resturant extends ChangeNotifier {
       description: "Double Burger",
       imagePath: "assets/images/burger/burger5.jpg",
       price: 8.99,
-      category: FoodCategory.burgers,
+      category: FoodCategory.Burgers,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Patty', price: 1.99),
@@ -76,7 +76,7 @@ class Resturant extends ChangeNotifier {
       description: "Garden Salad",
       imagePath: "assets/images/salads/salad1.jpg",
       price: 3.99,
-      category: FoodCategory.salads,
+      category: FoodCategory.Salads,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -88,7 +88,7 @@ class Resturant extends ChangeNotifier {
       description: "Greek Salad",
       imagePath: "assets/images/salads/salad2.jpg",
       price: 4.99,
-      category: FoodCategory.salads,
+      category: FoodCategory.Salads,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -100,7 +100,7 @@ class Resturant extends ChangeNotifier {
       description: "Caesar Salad",
       imagePath: "assets/images/salads/salad3.jpg",
       price: 5.99,
-      category: FoodCategory.salads,
+      category: FoodCategory.Salads,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -112,7 +112,7 @@ class Resturant extends ChangeNotifier {
       description: "Cobb Salad",
       imagePath: "assets/images/salads/salad4.jpg",
       price: 6.99,
-      category: FoodCategory.salads,
+      category: FoodCategory.Salads,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -124,7 +124,7 @@ class Resturant extends ChangeNotifier {
       description: "Waldorf Salad",
       imagePath: "assets/images/salads/salad5.jpg",
       price: 7.99,
-      category: FoodCategory.salads,
+      category: FoodCategory.Salads,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -138,7 +138,7 @@ class Resturant extends ChangeNotifier {
       description: "French Fries",
       imagePath: "assets/images/sides/sides1.jpg",
       price: 1.99,
-      category: FoodCategory.sides,
+      category: FoodCategory.Sides,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -150,7 +150,7 @@ class Resturant extends ChangeNotifier {
       description: "Onion Rings",
       imagePath: "assets/images/sides/sides2.jpg",
       price: 2.99,
-      category: FoodCategory.sides,
+      category: FoodCategory.Sides,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -162,7 +162,7 @@ class Resturant extends ChangeNotifier {
       description: "Mozzarella Sticks",
       imagePath: "assets/images/sides/sides3.jpg",
       price: 3.99,
-      category: FoodCategory.sides,
+      category: FoodCategory.Sides,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -174,7 +174,7 @@ class Resturant extends ChangeNotifier {
       description: "Garlic Bread",
       imagePath: "assets/images/sides/sides4.jpg",
       price: 4.99,
-      category: FoodCategory.sides,
+      category: FoodCategory.Sides,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -186,7 +186,7 @@ class Resturant extends ChangeNotifier {
       description: "Potato Wedges",
       imagePath: "assets/images/sides/sides5.jpg",
       price: 5.99,
-      category: FoodCategory.sides,
+      category: FoodCategory.Sides,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -200,7 +200,7 @@ class Resturant extends ChangeNotifier {
       description: "Chocolate Cake",
       imagePath: "assets/images/desserts/desserts1.jpg",
       price: 3.99,
-      category: FoodCategory.dessets,
+      category: FoodCategory.Desserts,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -212,7 +212,7 @@ class Resturant extends ChangeNotifier {
       description: "Cheese Cake",
       imagePath: "assets/images/desserts/desserts2.jpg",
       price: 4.99,
-      category: FoodCategory.dessets,
+      category: FoodCategory.Desserts,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -224,7 +224,7 @@ class Resturant extends ChangeNotifier {
       description: "Apple Pie",
       imagePath: "assets/images/desserts/desserts3.jpg",
       price: 5.99,
-      category: FoodCategory.dessets,
+      category: FoodCategory.Desserts,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -236,7 +236,7 @@ class Resturant extends ChangeNotifier {
       description: "Brownie",
       imagePath: "assets/images/desserts/desserts4.jpg",
       price: 6.99,
-      category: FoodCategory.dessets,
+      category: FoodCategory.Desserts,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -248,7 +248,7 @@ class Resturant extends ChangeNotifier {
       description: "Ice Cream",
       imagePath: "assets/images/desserts/desserts5.jpg",
       price: 7.99,
-      category: FoodCategory.dessets,
+      category: FoodCategory.Desserts,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -262,7 +262,7 @@ class Resturant extends ChangeNotifier {
       description: "Coke",
       imagePath: "assets/images/drinks/drink1.jpg",
       price: 1.99,
-      category: FoodCategory.drinks,
+      category: FoodCategory.Drinks,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -274,7 +274,7 @@ class Resturant extends ChangeNotifier {
       description: "Pepsi",
       imagePath: "assets/images/drinks/drink2.jpg",
       price: 2.99,
-      category: FoodCategory.drinks,
+      category: FoodCategory.Drinks,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -286,7 +286,7 @@ class Resturant extends ChangeNotifier {
       description: "Sprite",
       imagePath: "assets/images/drinks/drink3.jpg",
       price: 3.99,
-      category: FoodCategory.drinks,
+      category: FoodCategory.Drinks,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -298,7 +298,7 @@ class Resturant extends ChangeNotifier {
       description: "Fanta",
       imagePath: "assets/images/drinks/drink4.jpg",
       price: 4.99,
-      category: FoodCategory.drinks,
+      category: FoodCategory.Drinks,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),
@@ -310,7 +310,7 @@ class Resturant extends ChangeNotifier {
       description: "Lemonade",
       imagePath: "assets/images/drinks/drink5.jpg",
       price: 5.99,
-      category: FoodCategory.drinks,
+      category: FoodCategory.Drinks,
       availableAddons: [
         Addons(name: 'Extra Cheese', price: 0.99),
         Addons(name: 'Extra Chicken', price: 1.99),

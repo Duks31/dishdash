@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class Food {
   final String name;
   final String description;
@@ -5,7 +7,6 @@ class Food {
   final double price;
   final FoodCategory category;
   List<Addons> availableAddons;
-
 
   Food({
     required this.name,
@@ -18,11 +19,11 @@ class Food {
 }
 
 enum FoodCategory {
-  burgers,
-  salads,
-  sides,
-  dessets,
-  drinks,
+  Burgers,
+  Salads,
+  Sides,
+  Desserts,
+  Drinks,
 }
 
 class Addons {
