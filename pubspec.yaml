@@ -94,6 +94,7 @@ flutter:
     - assets/images/drinks/
     - assets/images/salads/
     - assets/images/sides/
+    - assets/demo/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
