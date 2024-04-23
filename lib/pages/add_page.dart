@@ -1,6 +1,8 @@
 import 'dart:io';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dishdash/components/my_button.dart';
+import 'package:dishdash/models/food_item.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dishdash/models/food.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,7 +15,15 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+
+  FoodCategory selectedCategory = FoodCategory.values.first;
+
   XFile? _imageFile;
+
+  final currentUser = FirebaseAuth.instance.currentUser!;
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
@@ -25,6 +35,67 @@ class _AddPageState extends State<AddPage> {
           _imageFile = pickedImage;
         },
       );
+    }
+  }
+
+  void addFoodItemToFirestore(FoodItem foodItem) async {
+    try {
+      // get refernce to the user's document based on their email
+      DocumentReference userDocRef =
+          FirebaseFirestore.instance.collection("Users").doc(currentUser.email);
+
+      // get a refernce to the "foods" collection within the user's document
+      CollectionReference foodsCollection = userDocRef.collection("foods");
+
+      await foodsCollection.add({
+        'name': foodItem.name,
+        'description': foodItem.description,
+        'price': foodItem.price,
+        'category': foodItem.category.toString(),
+        // 'imageUrl' : foodItem.imageURL,
+      });
+
+      // Alert user and clear text fields
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Success'),
+            content: Text('Food added successfully.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  nameController.clear();
+                  descriptionController.clear();
+                  priceController.clear();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } catch (e) {
+      // alert the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Failed to add food item: $e'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+      print("Error adding food to Firestore: $e");
     }
   }
 
@@ -50,10 +121,11 @@ class _AddPageState extends State<AddPage> {
             ),
 
             // add name of the food item
-            const Padding(
-              padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
               child: TextField(
-                decoration: InputDecoration(
+                controller: nameController,
+                decoration: const InputDecoration(
                   labelText: "Name",
                   border: OutlineInputBorder(),
                 ),
@@ -65,10 +137,11 @@ class _AddPageState extends State<AddPage> {
             ),
 
             // add the description of the food item
-            const Padding(
-              padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
               child: TextField(
-                decoration: InputDecoration(
+                controller: descriptionController,
+                decoration: const InputDecoration(
                   labelText: "Description",
                   border: OutlineInputBorder(),
                 ),
@@ -81,10 +154,11 @@ class _AddPageState extends State<AddPage> {
             ),
 
             // add the price of the food item
-            const Padding(
-              padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
               child: TextField(
-                decoration: InputDecoration(
+                controller: priceController,
+                decoration: const InputDecoration(
                   labelText: "Price",
                   border: OutlineInputBorder(),
                 ),
@@ -110,7 +184,11 @@ class _AddPageState extends State<AddPage> {
                     child: Text(category.toString().split('.').last),
                   );
                 }).toList(),
-                onChanged: (FoodCategory? value) {},
+                onChanged: (FoodCategory? value) {
+                  setState(() {
+                    selectedCategory = value!;
+                  });
+                },
               ),
             ),
 
@@ -119,27 +197,27 @@ class _AddPageState extends State<AddPage> {
             ),
 
             // add the image of the food item
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: GestureDetector(
-                onTap: _pickImage,
-                child: Container(
-                  height: 100,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    // transparent border
-                    border: Border.all(
-                      color: Colors.grey.withOpacity(0.5),
-                    ),
-                  ),
-                  child: Center(
-                    child: _imageFile != null
-                        ? Image.file(File(_imageFile!.path))
-                        : const Icon(Icons.add_a_photo, size: 50),
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(20.0),
+            //   child: GestureDetector(
+            //     onTap: _pickImage,
+            //     child: Container(
+            //       height: 100,
+            //       width: 50,
+            //       decoration: BoxDecoration(
+            //         // transparent border
+            //         border: Border.all(
+            //           color: Colors.grey.withOpacity(0.5),
+            //         ),
+            //       ),
+            //       child: Center(
+            //         child: _imageFile != null
+            //             ? Image.file(File(_imageFile!.path))
+            //             : const Icon(Icons.add_a_photo, size: 50),
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
             const SizedBox(
               height: 50,
@@ -148,7 +226,15 @@ class _AddPageState extends State<AddPage> {
             // add the Add button icon to add the food item
             MyButton(
               text: "Add",
-              onTap: () {},
+              onTap: () {
+                // add the food item to the
+                FoodItem foodItem = FoodItem(
+                    name: nameController.text,
+                    description: descriptionController.text,
+                    price: double.tryParse(priceController.text) ?? 0.0,
+                    category: selectedCategory.toString());
+                addFoodItemToFirestore(foodItem);
+              },
             ),
           ],
         ),
