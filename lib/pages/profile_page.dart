@@ -5,7 +5,7 @@ import "package:dishdash/services/auth/auth_service.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:flutter/material.dart";
 
-class ProfilePage extends StatefulWidget {
+class ProfilePage extends StatefulWidget {  
   const ProfilePage({super.key});
 
   @override

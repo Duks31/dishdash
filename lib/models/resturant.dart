@@ -11,7 +11,7 @@ class Resturant extends ChangeNotifier {
     // Burger x5 items
     Food(
       name: 'Cheese Burger',
-      description: "Cheese Burger",
+      description: "Juicy beef patty with melted cheese on a toasted bun. Add extra cheese for more flavor.",
       imagePath: "assets/images/burger/burger1.jpg",
       price: 5.99,
       category: FoodCategory.Burgers,
@@ -23,7 +23,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Chicken Burger',
-      description: "Chicken Burger",
+      description: "Grilled chicken breast with lettuce, tomato, and mayo on a soft bun. Customize with extra cheese or bacon.",
       imagePath: "assets/images/burger/burger2.jpg",
       price: 6.99,
       category: FoodCategory.Burgers,
@@ -35,7 +35,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Fish Burger',
-      description: "Fish Burger",
+      description: "Crispy fish fillet with tartar sauce on a toasted bun. Add extra cheese or bacon for a twist.",
       imagePath: "assets/images/burger/burger3.jpg",
       price: 7.99,
       category: FoodCategory.Burgers,
@@ -47,7 +47,7 @@ class Resturant extends ChangeNotifier {
     ),    
     Food(
       name: 'Veggie Burger',
-      description: "Veggie Burger",
+      description: "Grilled vegetable patty with lettuce and mayo on a soft bun. Customize with extra cheese or bacon.",
       imagePath: "assets/images/burger/burger4.jpg",
       price: 4.99,
       category: FoodCategory.Burgers,
@@ -59,7 +59,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Double Burger',
-      description: "Double Burger",
+      description: "Two beef patties with melted cheese, lettuce, and pickles on toasted buns. Add extra cheese or bacon for extra satisfaction.",
       imagePath: "assets/images/burger/burger5.jpg",
       price: 8.99,
       category: FoodCategory.Burgers,
@@ -73,7 +73,7 @@ class Resturant extends ChangeNotifier {
     // salads x5 items
     Food(
       name: 'Garden Salad',
-      description: "Garden Salad",
+      description: "Fresh greens tossed with ripe tomatoes, crisp cucumbers, and colorful bell peppers. Optional cheese, chicken, or bacon for extra flavor.",
       imagePath: "assets/images/salads/salad1.jpg",
       price: 3.99,
       category: FoodCategory.Salads,
@@ -85,7 +85,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Greek Salad',
-      description: "Greek Salad",
+      description: "Crisp romaine lettuce with kalamata olives, juicy tomatoes, cucumbers, red onions, and creamy feta cheese. Drizzled with Greek dressing for a tangy finish.",
       imagePath: "assets/images/salads/salad2.jpg",
       price: 4.99,
       category: FoodCategory.Salads,
@@ -97,7 +97,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Caesar Salad',
-      description: "Caesar Salad",
+      description: "Romaine lettuce tossed in Caesar dressing with crunchy croutons and shaved Parmesan cheese. Add grilled chicken or crispy bacon for a protein boost.",
       imagePath: "assets/images/salads/salad3.jpg",
       price: 5.99,
       category: FoodCategory.Salads,
@@ -109,7 +109,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Cobb Salad',
-      description: "Cobb Salad",
+      description: "A hearty mix of lettuce, grilled chicken, avocado, bacon, hard-boiled eggs, tomatoes, and blue cheese crumbles. Tossed in a tangy vinaigrette dressing.",
       imagePath: "assets/images/salads/salad4.jpg",
       price: 6.99,
       category: FoodCategory.Salads,
@@ -121,7 +121,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Waldorf Salad',
-      description: "Waldorf Salad",
+      description: "Crisp apples, celery, grapes, and toasted walnuts in creamy mayonnaise dressing. A refreshing blend of sweet and crunchy flavors.",
       imagePath: "assets/images/salads/salad5.jpg",
       price: 7.99,
       category: FoodCategory.Salads,
@@ -135,7 +135,7 @@ class Resturant extends ChangeNotifier {
     // sides x5 items
     Food(
       name: 'French Fries',
-      description: "French Fries",
+      description: "Crispy golden fries, perfect for dipping or enjoying on their own.",
       imagePath: "assets/images/sides/sides1.jpg",
       price: 1.99,
       category: FoodCategory.Sides,
@@ -147,7 +147,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Onion Rings',
-      description: "Onion Rings",
+      description: "Crispy battered onion rings, fried to perfection for a satisfying crunch.",
       imagePath: "assets/images/sides/sides2.jpg",
       price: 2.99,
       category: FoodCategory.Sides,
@@ -159,7 +159,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Mozzarella Sticks',
-      description: "Mozzarella Sticks",
+      description: "Melt-in-your-mouth mozzarella sticks with a crispy coating, served hot and gooey.",
       imagePath: "assets/images/sides/sides3.jpg",
       price: 3.99,
       category: FoodCategory.Sides,
@@ -171,7 +171,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Garlic Bread',
-      description: "Garlic Bread",
+      description: "Toasted bread infused with savory garlic butter, a classic side for any meal.",
       imagePath: "assets/images/sides/sides4.jpg",
       price: 4.99,
       category: FoodCategory.Sides,
@@ -183,7 +183,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Potato Wedges',
-      description: "Potato Wedges",
+      description: "Thick-cut potato wedges seasoned and baked to crispy perfection, a hearty side dish option.",
       imagePath: "assets/images/sides/sides5.jpg",
       price: 5.99,
       category: FoodCategory.Sides,
@@ -197,7 +197,7 @@ class Resturant extends ChangeNotifier {
     // desserts x5 items
     Food(
       name: 'Chocolate Cake',
-      description: "Chocolate Cake",
+      description: "Rich and decadent chocolate cake, a timeless indulgence for any sweet tooth.",
       imagePath: "assets/images/desserts/desserts1.jpg",
       price: 3.99,
       category: FoodCategory.Desserts,
@@ -209,7 +209,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Cheese Cake',
-      description: "Cheese Cake",
+      description: "Creamy cheesecake on a graham cracker crust, a classic dessert favorite.",
       imagePath: "assets/images/desserts/desserts2.jpg",
       price: 4.99,
       category: FoodCategory.Desserts,
@@ -221,7 +221,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Apple Pie',
-      description: "Apple Pie",
+      description: "Warm apple pie with a flaky crust and cinnamon-spiced filling, reminiscent of home-baked ",
       imagePath: "assets/images/desserts/desserts3.jpg",
       price: 5.99,
       category: FoodCategory.Desserts,
@@ -233,7 +233,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Brownie',
-      description: "Brownie",
+      description: "Fudgy brownie squares, loaded with chocolate flavor and topped with a hint of sweetness.",
       imagePath: "assets/images/desserts/desserts4.jpg",
       price: 6.99,
       category: FoodCategory.Desserts,
@@ -245,7 +245,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Ice Cream',
-      description: "Ice Cream",
+      description: "Creamy scoops of ice cream in various flavors, the perfect treat to cool down and satisfy your cravings.",
       imagePath: "assets/images/desserts/desserts5.jpg",
       price: 7.99,
       category: FoodCategory.Desserts,
@@ -259,7 +259,7 @@ class Resturant extends ChangeNotifier {
     // drinks x5 items
     Food(
       name: 'Coke',
-      description: "Coke",
+      description: "Classic Coca-Cola, refreshing and fizzy, perfect for any occasion.",
       imagePath: "assets/images/drinks/drink1.jpg",
       price: 1.99,
       category: FoodCategory.Drinks,
@@ -271,7 +271,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Pepsi',
-      description: "Pepsi",
+      description: "Pepsi's bold and sweet taste, a timeless favorite for soda enthusiasts.",
       imagePath: "assets/images/drinks/drink2.jpg",
       price: 2.99,
       category: FoodCategory.Drinks,
@@ -283,7 +283,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Sprite',
-      description: "Sprite",
+      description: "Crisp and clear Sprite, with its lemon-lime flavor offering a refreshing twist.",
       imagePath: "assets/images/drinks/drink3.jpg",
       price: 3.99,
       category: FoodCategory.Drinks,
@@ -295,7 +295,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Fanta',
-      description: "Fanta",
+      description: "Fanta's fruity and vibrant taste, available in various exciting flavors to tantalize your taste buds.",
       imagePath: "assets/images/drinks/drink4.jpg",
       price: 4.99,
       category: FoodCategory.Drinks,
@@ -307,7 +307,7 @@ class Resturant extends ChangeNotifier {
     ),
     Food(
       name: 'Lemonade',
-      description: "Lemonade",
+      description: "Zesty and refreshing lemonade, a perfect balance of sweet and tangy flavors to quench your thirst.",
       imagePath: "assets/images/drinks/drink5.jpg",
       price: 5.99,
       category: FoodCategory.Drinks,
