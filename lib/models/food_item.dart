@@ -5,14 +5,14 @@ class FoodItem {
   final String description;
   final double price;
   final String category;
-  // final String imageURL;
+  final String imageURL;
 
   FoodItem({
     required this.name,
     required this.description,
     required this.price,
     required this.category,
-    // required this.imageURL,
+    required this.imageURL,
 
   });
 }

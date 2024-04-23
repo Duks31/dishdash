@@ -1,8 +1,10 @@
 import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dishdash/components/my_button.dart';
 import 'package:dishdash/models/food_item.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:dishdash/models/food.dart';
 import 'package:image_picker/image_picker.dart';
@@ -20,23 +22,9 @@ class _AddPageState extends State<AddPage> {
   final TextEditingController priceController = TextEditingController();
 
   FoodCategory selectedCategory = FoodCategory.values.first;
-
-  XFile? _imageFile;
-
   final currentUser = FirebaseAuth.instance.currentUser!;
 
-  Future<void> _pickImage() async {
-    final picker = ImagePicker();
-    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedImage != null) {
-      setState(
-        () {
-          _imageFile = pickedImage;
-        },
-      );
-    }
-  }
+  String imageUrl = "";
 
   void addFoodItemToFirestore(FoodItem foodItem) async {
     try {
@@ -52,7 +40,8 @@ class _AddPageState extends State<AddPage> {
         'description': foodItem.description,
         'price': foodItem.price,
         'category': foodItem.category.toString(),
-        // 'imageUrl' : foodItem.imageURL,
+        'vendor': currentUser.email,
+        'imageUrl' : foodItem.imageURL,
       });
 
       // Alert user and clear text fields
@@ -60,8 +49,8 @@ class _AddPageState extends State<AddPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Success'),
-            content: Text('Food added successfully.'),
+            title: const Text('Success'),
+            content: const Text('Food added successfully.'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -82,14 +71,14 @@ class _AddPageState extends State<AddPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Error'),
+            title: const Text('Error'),
             content: Text('Failed to add food item: $e'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
@@ -110,7 +99,7 @@ class _AddPageState extends State<AddPage> {
 
             // add food item text
             Text(
-              "Add Food Item",
+              "You are a vendor - Add Food Item",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 20, color: Theme.of(context).colorScheme.secondary),
@@ -197,27 +186,57 @@ class _AddPageState extends State<AddPage> {
             ),
 
             // add the image of the food item
-            // Padding(
-            //   padding: const EdgeInsets.all(20.0),
-            //   child: GestureDetector(
-            //     onTap: _pickImage,
-            //     child: Container(
-            //       height: 100,
-            //       width: 50,
-            //       decoration: BoxDecoration(
-            //         // transparent border
-            //         border: Border.all(
-            //           color: Colors.grey.withOpacity(0.5),
-            //         ),
-            //       ),
-            //       child: Center(
-            //         child: _imageFile != null
-            //             ? Image.file(File(_imageFile!.path))
-            //             : const Icon(Icons.add_a_photo, size: 50),
-            //       ),
-            //     ),
-            //   ),
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: GestureDetector(
+                onTap: () async {
+                  if (imageUrl.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Please upload an image."),
+                      ),
+                    );
+                  }
+
+                  // pick_image
+                  ImagePicker imagePicker = ImagePicker();
+                  XFile? file =
+                      await imagePicker.pickImage(source: ImageSource.gallery);
+
+                  if (file == null) return;
+                  String uniqueFileName =
+                      DateTime.now().millisecondsSinceEpoch.toString();
+
+                  // upload the image to firebase storage
+                  Reference referenceRoot = FirebaseStorage.instance.ref();
+                  Reference referenceDirImages = referenceRoot.child("images");
+
+                  Reference referenceImageToUpload =
+                      referenceDirImages.child(uniqueFileName);
+
+                  try {
+                    //store file
+                    await referenceImageToUpload.putFile(File(file.path));
+
+                    //success: get the download URL
+                    imageUrl = await referenceImageToUpload.getDownloadURL();
+                  } catch (e) {}
+                },
+                child: Container(
+                  height: 100,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    // transparent border
+                    border: Border.all(
+                      color: Colors.grey.withOpacity(0.5),
+                    ),
+                  ),
+                  child: const Center(
+                    child: Icon(Icons.add_a_photo, size: 50),
+                  ),
+                ),
+              ),
+            ),
 
             const SizedBox(
               height: 50,
@@ -229,10 +248,12 @@ class _AddPageState extends State<AddPage> {
               onTap: () {
                 // add the food item to the
                 FoodItem foodItem = FoodItem(
-                    name: nameController.text,
-                    description: descriptionController.text,
-                    price: double.tryParse(priceController.text) ?? 0.0,
-                    category: selectedCategory.toString());
+                  name: nameController.text,
+                  description: descriptionController.text,
+                  price: double.tryParse(priceController.text) ?? 0.0,
+                  category: selectedCategory.toString(),
+                  imageURL: imageUrl,
+                );
                 addFoodItemToFirestore(foodItem);
               },
             ),
